@@ -7,15 +7,21 @@ import {
 } from "@aws-sdk/lib-dynamodb";
 import { StudyDay } from "./types";
 
-const ddbClient = new DynamoDBClient({
-  region: process.env.BEDROCK_REGION || "us-east-1",
-  credentials: {
-    accessKeyId: process.env.BEDROCK_ACCESS_KEY_ID!,
-    secretAccessKey: process.env.BEDROCK_SECRET_ACCESS_KEY!,
-  },
-});
+let _docClient: DynamoDBDocumentClient | null = null;
 
-const docClient = DynamoDBDocumentClient.from(ddbClient);
+function getDocClient(): DynamoDBDocumentClient {
+  if (!_docClient) {
+    const ddbClient = new DynamoDBClient({
+      region: process.env.BEDROCK_REGION || "us-east-1",
+      credentials: {
+        accessKeyId: process.env.BEDROCK_ACCESS_KEY_ID!,
+        secretAccessKey: process.env.BEDROCK_SECRET_ACCESS_KEY!,
+      },
+    });
+    _docClient = DynamoDBDocumentClient.from(ddbClient);
+  }
+  return _docClient;
+}
 const TABLE_NAME = process.env.DYNAMODB_TABLE || "profe-paes-students";
 
 export interface StudentProfile {
@@ -34,7 +40,7 @@ export interface StudentProfile {
 
 export async function getStudent(studentId: string): Promise<StudentProfile | null> {
   try {
-    const result = await docClient.send(
+    const result = await getDocClient().send(
       new GetCommand({ TableName: TABLE_NAME, Key: { student_id: studentId } })
     );
     return (result.Item as StudentProfile) || null;
@@ -46,7 +52,7 @@ export async function getStudent(studentId: string): Promise<StudentProfile | nu
 
 export async function createStudent(profile: StudentProfile): Promise<void> {
   try {
-    await docClient.send(new PutCommand({ TableName: TABLE_NAME, Item: profile }));
+    await getDocClient().send(new PutCommand({ TableName: TABLE_NAME, Item: profile }));
   } catch (error) {
     console.error("DynamoDB put error:", error);
     throw error;
@@ -58,7 +64,7 @@ export async function updateStudentGaps(
   gaps: Record<string, number>
 ): Promise<void> {
   try {
-    await docClient.send(
+    await getDocClient().send(
       new UpdateCommand({
         TableName: TABLE_NAME,
         Key: { student_id: studentId },
@@ -82,7 +88,7 @@ export async function updateStudentPlan(
   studyPath: string
 ): Promise<void> {
   try {
-    await docClient.send(
+    await getDocClient().send(
       new UpdateCommand({
         TableName: TABLE_NAME,
         Key: { student_id: studentId },
@@ -121,7 +127,7 @@ export async function updateStreak(studentId: string): Promise<number> {
       newStreak = 1;
     }
 
-    await docClient.send(
+    await getDocClient().send(
       new UpdateCommand({
         TableName: TABLE_NAME,
         Key: { student_id: studentId },

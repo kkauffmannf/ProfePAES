@@ -6,13 +6,20 @@ import {
 } from "@aws-sdk/client-bedrock-runtime";
 import { StudyDay } from "./types";
 
-const client = new BedrockRuntimeClient({
-  region: process.env.BEDROCK_REGION || "us-east-1",
-  credentials: {
-    accessKeyId: process.env.BEDROCK_ACCESS_KEY_ID!,
-    secretAccessKey: process.env.BEDROCK_SECRET_ACCESS_KEY!,
-  },
-});
+let _client: BedrockRuntimeClient | null = null;
+
+function getClient(): BedrockRuntimeClient {
+  if (!_client) {
+    _client = new BedrockRuntimeClient({
+      region: process.env.BEDROCK_REGION || "us-east-1",
+      credentials: {
+        accessKeyId: process.env.BEDROCK_ACCESS_KEY_ID!,
+        secretAccessKey: process.env.BEDROCK_SECRET_ACCESS_KEY!,
+      },
+    });
+  }
+  return _client;
+}
 
 export const NOVA_LITE = "us.amazon.nova-2-lite-v1:0";
 export const NOVA_PRO = "us.amazon.nova-2-lite-v1:0"; // Nova 2 Lite replaces both — no Nova 2 Pro yet
@@ -99,7 +106,7 @@ export async function chatWithNova(
     },
   };
 
-  const response = await client.send(new ConverseCommand(input));
+  const response = await getClient().send(new ConverseCommand(input));
   const content = response.output?.message?.content;
   if (content && content[0] && "text" in content[0]) {
     return content[0].text || "";
@@ -155,7 +162,7 @@ Cuando el alumno envíe una foto de un problema o ejercicio:
     },
   };
 
-  const response = await client.send(new ConverseCommand(input));
+  const response = await getClient().send(new ConverseCommand(input));
   const content = response.output?.message?.content;
   if (content && content[0] && "text" in content[0]) {
     return content[0].text || "";
