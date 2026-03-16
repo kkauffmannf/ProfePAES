@@ -1,25 +1,37 @@
-# Profe PAES 
+# Profe PAES 🎓
 
-**Tu preuniversitario gratis** — AI tutor for Chilean students preparing the PAES exam.
+**Tu preuniversitario gratis** — Free AI tutor for Chilean students preparing the PAES (Prueba de Acceso a la Educación Superior).
 
-Built for the Amazon Nova Hackathon. Powered by **Amazon Nova** via Amazon Bedrock.
+Built for the **Amazon Nova Hackathon**. Powered by **Amazon Nova 2 Lite** via Amazon Bedrock.
 
 ## What it does
 
-- **Diagnostic test** — detects knowledge gaps (what the student doesn't know they don't know)
-- **1-year study plan** — personalized daily missions based on the DEMRE official temario
-- **AI Tutor chat** — text, voice (Web Speech API), and image upload (photo of any exercise)
+- **Diagnostic test** — 7-question gap detector across M1, M2, Comp. Lectora, Ciencias, and Historia
+- **Personalized study plan** — 14-day daily missions based on the official DEMRE temario, prioritizing weak areas
+- **Mini-lectures** — preuniversitario-style lessons with explanations, key points, and 3 PAES-level exercises (A/B/C/D)
+- **AI Tutor chat** — WhatsApp-style short responses with clickable quick-reply suggestions
+- **Multimodal input** — text, voice (Web Speech API), and image upload (photo of any exercise)
 - **Text-to-speech** — browser TTS reads AI responses aloud
-- **Progress tracking** — streak counter, daily missions, gap level per subject
+- **Progress tracking** — streak counter, subject levels, clickable study calendar
 
 ## Tech Stack
 
 | Layer | Technology |
 |---|---|
-| Frontend | Next.js 14 + TailwindCSS |
-| AI | Amazon Nova Lite + Nova Pro (via Bedrock Converse API) |
+| Frontend | Next.js 14 (App Router) + TailwindCSS |
+| AI Model | **Amazon Nova 2 Lite** (`us.amazon.nova-2-lite-v1:0`) via Bedrock Converse API |
 | Database | Amazon DynamoDB (PAY_PER_REQUEST) |
 | Hosting | AWS Amplify |
+
+## Amazon Nova 2 Lite Usage
+
+All AI features use **Amazon Nova 2 Lite** (the latest Nova model, Dec 2025) through the Bedrock Converse API:
+
+- **Chat** — conversational tutoring in Chilean Spanish with PAES context
+- **Image analysis** — multimodal understanding of math problems, texts, and exercises
+- **Diagnostic analysis** — gap detection and study path recommendation
+- **Study plan generation** — structured 14-day personalized curriculum
+- **Lesson generation** — mini-lectures with explanations and verified exercises
 
 ## Setup
 
@@ -35,44 +47,23 @@ npm install
 AWS_ACCESS_KEY_ID=your_key
 AWS_SECRET_ACCESS_KEY=your_secret
 AWS_REGION=us-east-1
-DYNAMODB_TABLE=profe-paes-students
 ```
 
-### 3. Create DynamoDB table
+### 3. Enable Nova 2 Lite in Bedrock
 
-```bash
-node scripts/setup-dynamodb.js
-```
+Go to AWS Console > Bedrock > Model Access and enable `amazon.nova-2-lite-v1:0`.
 
 ### 4. Run locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deploy on AWS Amplify
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Push to GitHub
+2. Go to AWS Amplify Console > Create new app > Connect GitHub repo
+3. Add environment variables (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION`)
+4. Deploy — Amplify auto-detects Next.js SSR
