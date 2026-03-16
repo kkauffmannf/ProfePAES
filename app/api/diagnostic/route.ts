@@ -43,10 +43,11 @@ export async function POST(req: NextRequest) {
       totalQuestions: diagnosticQuestions.length,
       correctCount: evaluatedAnswers.filter((a) => a.correct).length,
     });
-  } catch (error) {
-    console.error("Diagnostic API error:", error);
+  } catch (error: unknown) {
+    const e = error as Error;
+    console.error("Diagnostic API error:", e);
     return NextResponse.json(
-      { error: "Error al procesar el diagnóstico." },
+      { error: "Error al procesar el diagnóstico.", detail: e?.message || String(error) },
       { status: 500 }
     );
   }

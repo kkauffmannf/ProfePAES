@@ -71,7 +71,12 @@ export default function DiagnosticTest({
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ answers }),
         });
-        const data: DiagnosticResult = await res.json();
+        const raw = await res.json();
+        if (raw.error) {
+          alert(`Error diagnóstico: ${raw.detail || raw.error}`);
+          return;
+        }
+        const data: DiagnosticResult = raw;
         setResult(data);
         updateStudent({
           gaps: data.gaps,
@@ -79,8 +84,8 @@ export default function DiagnosticTest({
           diagnosticComplete: true,
         });
         onComplete(data);
-      } catch {
-        console.error("Diagnostic submission failed");
+      } catch (err) {
+        console.error("Diagnostic submission failed", err);
       } finally {
         setIsSubmitting(false);
       }
