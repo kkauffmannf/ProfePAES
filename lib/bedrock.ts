@@ -4,6 +4,7 @@ import {
   ConverseCommandInput,
   Message,
 } from "@aws-sdk/client-bedrock-runtime";
+import { StudyDay } from "./types";
 
 const client = new BedrockRuntimeClient({
   region: process.env.BEDROCK_REGION || process.env.AWS_REGION || "us-east-1",
@@ -279,11 +280,4 @@ IMPORTANTE: Genera solo los primeros 14 días. Prioriza las materias con nivel m
   };
 }
 
-export interface StudyDay {
-  dayNumber: number;
-  subject: string;
-  topic: string;
-  mission: string;
-  duration: number;
-  type: "lesson" | "practice" | "review";
-}
+export type { StudyDay } from "./types";

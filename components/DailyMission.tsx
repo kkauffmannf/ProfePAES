@@ -121,7 +121,7 @@ export default function DailyMission() {
           </div>
           <div className="space-y-2">
             {student.targetSubjects.map((s) => {
-              const level = student.gaps[s] || 0;
+              const level = (student.gaps || {})[s] || 0;
               const levelPct = (level / 5) * 100;
               const nextMission = student.studyPlan?.find(
                 (m, idx) => idx >= student.currentDay - 1 && m.subject === s

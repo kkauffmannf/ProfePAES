@@ -5,7 +5,7 @@ import {
   PutCommand,
   UpdateCommand,
 } from "@aws-sdk/lib-dynamodb";
-import { StudyDay } from "./bedrock";
+import { StudyDay } from "./types";
 
 const ddbClient = new DynamoDBClient({
   region: process.env.BEDROCK_REGION || process.env.AWS_REGION || "us-east-1",
