@@ -14,10 +14,10 @@ if (fs.existsSync(envPath)) {
 }
 
 const client = new DynamoDBClient({
-  region: process.env.AWS_REGION || "us-east-1",
+  region: process.env.BEDROCK_REGION || "us-east-1",
   credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    accessKeyId: process.env.BEDROCK_ACCESS_KEY_ID,
+    secretAccessKey: process.env.BEDROCK_SECRET_ACCESS_KEY,
   },
 });
 
