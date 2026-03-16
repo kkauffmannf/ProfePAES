@@ -7,13 +7,11 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const {
       messages,
-      studentId,
       currentSubject,
       gaps,
       targetSubjects,
     }: {
       messages: ChatMessage[];
-      studentId?: string;
       currentSubject?: string;
       gaps?: Record<string, number>;
       targetSubjects?: string[];
@@ -72,18 +70,13 @@ REGLAS DE SUGERENCIAS:
       }
     }
 
-    void studentId;
-
     const response = await chatWithNova(messages, contextualSystemPrompt, NOVA_LITE);
 
     return NextResponse.json({ message: response });
-  } catch (error: unknown) {
-    const e = error as Record<string, unknown>;
-    console.error("Chat API error name:", e?.name);
-    console.error("Chat API error message:", e?.message);
-    console.error("Chat API error code:", e?.["$fault"], e?.["$metadata"]);
+  } catch (error) {
+    console.error("Chat API error:", error);
     return NextResponse.json(
-      { error: "Error al conectar con el tutor. Por favor intenta de nuevo.", detail: String(e?.message) },
+      { error: "Error al conectar con el tutor. Por favor intenta de nuevo." },
       { status: 500 }
     );
   }

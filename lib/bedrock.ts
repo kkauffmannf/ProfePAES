@@ -246,8 +246,6 @@ IMPORTANTE: Genera solo los primeros 14 días. Prioriza las materias con nivel m
     4000
   );
 
-  console.log("Study plan raw response (first 500 chars):", result.substring(0, 500));
-
   try {
     // Try direct parse first
     const parsed = JSON.parse(result.trim());
