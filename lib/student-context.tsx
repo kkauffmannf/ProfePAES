@@ -41,24 +41,33 @@ function generateId(): string {
 }
 
 export function StudentProvider({ children }: { children: React.ReactNode }) {
-  const [student, setStudent] = useState<StudentState>(() => {
-    if (typeof window === "undefined") {
-      return { studentId: "temp", ...DEFAULT_STATE };
-    }
+  const [student, setStudent] = useState<StudentState>({
+    studentId: "temp",
+    ...DEFAULT_STATE,
+  });
+  const [hydrated, setHydrated] = useState(false);
+
+  // Load from localStorage after mount (SSR-safe)
+  useEffect(() => {
     const stored = localStorage.getItem("profe-paes-student");
     if (stored) {
       try {
-        return JSON.parse(stored);
+        setStudent(JSON.parse(stored));
       } catch {
-        // fall through
+        setStudent({ studentId: generateId(), ...DEFAULT_STATE });
       }
+    } else {
+      setStudent({ studentId: generateId(), ...DEFAULT_STATE });
     }
-    return { studentId: generateId(), ...DEFAULT_STATE };
-  });
+    setHydrated(true);
+  }, []);
 
+  // Persist to localStorage after hydration
   useEffect(() => {
-    localStorage.setItem("profe-paes-student", JSON.stringify(student));
-  }, [student]);
+    if (hydrated) {
+      localStorage.setItem("profe-paes-student", JSON.stringify(student));
+    }
+  }, [student, hydrated]);
 
   const updateStudent = (updates: Partial<StudentState>) => {
     setStudent((prev) => ({ ...prev, ...updates }));
