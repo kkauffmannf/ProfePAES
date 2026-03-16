@@ -52,16 +52,7 @@ export function StudentProvider({ children }: { children: React.ReactNode }) {
     const stored = localStorage.getItem("profe-paes-student");
     if (stored) {
       try {
-        const parsed = JSON.parse(stored);
-        // Ensure all required fields have safe defaults
-        setStudent({
-          ...DEFAULT_STATE,
-          studentId: generateId(),
-          ...parsed,
-          gaps: { ...DEFAULT_STATE.gaps, ...(parsed.gaps || {}) },
-          targetSubjects: parsed.targetSubjects || [],
-          studyPlan: parsed.studyPlan || [],
-        });
+        setStudent(JSON.parse(stored));
       } catch {
         setStudent({ studentId: generateId(), ...DEFAULT_STATE });
       }
