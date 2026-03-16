@@ -1,0 +1,399 @@
+{
+  "subjects": {
+    "M1": {
+      "name": "Matemática M1",
+      "color": "#3B82F6",
+      "units": [
+        {
+          "id": "M1-U1",
+          "title": "Números",
+          "topics": [
+            "Conjuntos numéricos (naturales, enteros, racionales, reales)",
+            "Operaciones con números enteros",
+            "Fracciones y decimales",
+            "Porcentajes y proporciones",
+            "Potencias y raíces",
+            "Notación científica"
+          ],
+          "prerequisites": ["Operaciones básicas", "Multiplicación y división"],
+          "daily_order": 1,
+          "difficulty": "foundation",
+          "paes_frequency": "alta"
+        },
+        {
+          "id": "M1-U2",
+          "title": "Álgebra y Funciones",
+          "topics": [
+            "Expresiones algebraicas",
+            "Ecuaciones de primer grado",
+            "Sistemas de ecuaciones",
+            "Inecuaciones",
+            "Funciones lineales y cuadráticas",
+            "Gráficos de funciones"
+          ],
+          "prerequisites": ["Números", "Operaciones algebraicas básicas"],
+          "daily_order": 2,
+          "difficulty": "medium",
+          "paes_frequency": "muy alta"
+        },
+        {
+          "id": "M1-U3",
+          "title": "Geometría",
+          "topics": [
+            "Figuras geométricas básicas",
+            "Perímetro, área y volumen",
+            "Triángulos y teorema de Pitágoras",
+            "Semejanza y congruencia",
+            "Circunferencia y círculo",
+            "Geometría analítica básica"
+          ],
+          "prerequisites": ["Números", "Fracciones"],
+          "daily_order": 3,
+          "difficulty": "medium",
+          "paes_frequency": "alta"
+        },
+        {
+          "id": "M1-U4",
+          "title": "Probabilidad y Estadística",
+          "topics": [
+            "Tablas y gráficos estadísticos",
+            "Medidas de tendencia central (media, mediana, moda)",
+            "Medidas de dispersión",
+            "Probabilidad simple",
+            "Combinatoria básica"
+          ],
+          "prerequisites": ["Números", "Fracciones"],
+          "daily_order": 4,
+          "difficulty": "medium",
+          "paes_frequency": "media"
+        }
+      ]
+    },
+    "M2": {
+      "name": "Matemática M2",
+      "color": "#8B5CF6",
+      "units": [
+        {
+          "id": "M2-U1",
+          "title": "Álgebra avanzada",
+          "topics": [
+            "Polinomios y factorización",
+            "Funciones exponenciales y logarítmicas",
+            "Progresiones aritméticas y geométricas",
+            "Números complejos",
+            "Ecuaciones de segundo grado"
+          ],
+          "prerequisites": ["M1 Álgebra y Funciones"],
+          "daily_order": 1,
+          "difficulty": "hard",
+          "paes_frequency": "muy alta"
+        },
+        {
+          "id": "M2-U2",
+          "title": "Geometría avanzada",
+          "topics": [
+            "Trigonometría (seno, coseno, tangente)",
+            "Identidades trigonométricas",
+            "Geometría analítica (rectas, parábolas, circunferencias)",
+            "Vectores"
+          ],
+          "prerequisites": ["M1 Geometría"],
+          "daily_order": 2,
+          "difficulty": "hard",
+          "paes_frequency": "alta"
+        },
+        {
+          "id": "M2-U3",
+          "title": "Cálculo introductorio",
+          "topics": [
+            "Límites",
+            "Derivadas básicas",
+            "Aplicaciones de derivadas",
+            "Integral básica"
+          ],
+          "prerequisites": ["M2 Álgebra avanzada", "M2 Geometría avanzada"],
+          "daily_order": 3,
+          "difficulty": "very_hard",
+          "paes_frequency": "media"
+        }
+      ]
+    },
+    "CL": {
+      "name": "Competencia Lectora",
+      "color": "#10B981",
+      "units": [
+        {
+          "id": "CL-U1",
+          "title": "Comprensión de lectura básica",
+          "topics": [
+            "Identificar la idea principal",
+            "Identificar ideas secundarias",
+            "Vocabulario en contexto",
+            "Inferencias directas",
+            "Tipos de textos (narrativo, expositivo, argumentativo)"
+          ],
+          "prerequisites": ["Lectura básica"],
+          "daily_order": 1,
+          "difficulty": "foundation",
+          "paes_frequency": "muy alta"
+        },
+        {
+          "id": "CL-U2",
+          "title": "Análisis textual",
+          "topics": [
+            "Estructura del texto",
+            "Relaciones entre párrafos",
+            "Argumentación y contraargumentación",
+            "Propósito del autor",
+            "Punto de vista y perspectiva"
+          ],
+          "prerequisites": ["CL Comprensión básica"],
+          "daily_order": 2,
+          "difficulty": "medium",
+          "paes_frequency": "muy alta"
+        },
+        {
+          "id": "CL-U3",
+          "title": "Textos literarios",
+          "topics": [
+            "Narrativa (cuento, novela)",
+            "Poesía y figuras literarias",
+            "Teatro",
+            "Recursos literarios",
+            "Contexto histórico y cultural"
+          ],
+          "prerequisites": ["CL Comprensión básica"],
+          "daily_order": 3,
+          "difficulty": "medium",
+          "paes_frequency": "alta"
+        },
+        {
+          "id": "CL-U4",
+          "title": "Textos no literarios",
+          "topics": [
+            "Textos informativos",
+            "Textos argumentativos",
+            "Multimodalidad (imágenes, gráficos con texto)",
+            "Medios de comunicación",
+            "Textos digitales"
+          ],
+          "prerequisites": ["CL Análisis textual"],
+          "daily_order": 4,
+          "difficulty": "medium",
+          "paes_frequency": "muy alta"
+        }
+      ]
+    },
+    "CIENCIAS": {
+      "name": "Ciencias",
+      "color": "#F59E0B",
+      "units": [
+        {
+          "id": "CIEN-BIO",
+          "title": "Biología",
+          "topics": [
+            "Célula y procesos vitales",
+            "Genética y herencia",
+            "Evolución",
+            "Ecología y medioambiente",
+            "Cuerpo humano y salud",
+            "Reino animal y vegetal"
+          ],
+          "prerequisites": [],
+          "daily_order": 1,
+          "difficulty": "medium",
+          "paes_frequency": "alta"
+        },
+        {
+          "id": "CIEN-QUIM",
+          "title": "Química",
+          "topics": [
+            "Materia y sus propiedades",
+            "Tabla periódica y elementos",
+            "Enlace químico",
+            "Reacciones químicas",
+            "Ácidos, bases y sales",
+            "Química orgánica básica"
+          ],
+          "prerequisites": ["Números", "Proporciones"],
+          "daily_order": 2,
+          "difficulty": "hard",
+          "paes_frequency": "alta"
+        },
+        {
+          "id": "CIEN-FIS",
+          "title": "Física",
+          "topics": [
+            "Cinemática (velocidad, aceleración)",
+            "Dinámica (fuerza, masa, Newton)",
+            "Energía y trabajo",
+            "Calor y temperatura",
+            "Electricidad y magnetismo",
+            "Ondas y sonido"
+          ],
+          "prerequisites": ["M1 Álgebra", "M1 Geometría"],
+          "daily_order": 3,
+          "difficulty": "hard",
+          "paes_frequency": "alta"
+        }
+      ]
+    },
+    "HIST": {
+      "name": "Historia y Ciencias Sociales",
+      "color": "#EF4444",
+      "units": [
+        {
+          "id": "HIST-U1",
+          "title": "Historia de Chile",
+          "topics": [
+            "Pueblos originarios",
+            "Conquista y Colonia",
+            "Independencia de Chile",
+            "República parlamentaria y presidencial",
+            "Siglo XX: dictadura y democracia",
+            "Chile actual"
+          ],
+          "prerequisites": [],
+          "daily_order": 1,
+          "difficulty": "medium",
+          "paes_frequency": "muy alta"
+        },
+        {
+          "id": "HIST-U2",
+          "title": "Historia Universal",
+          "topics": [
+            "Civilizaciones antiguas",
+            "Edad Media",
+            "Renacimiento e Ilustración",
+            "Revoluciones (francesa, industrial)",
+            "Guerras mundiales",
+            "Guerra Fría y mundo actual"
+          ],
+          "prerequisites": [],
+          "daily_order": 2,
+          "difficulty": "medium",
+          "paes_frequency": "alta"
+        },
+        {
+          "id": "HIST-U3",
+          "title": "Geografía",
+          "topics": [
+            "Geografía de Chile",
+            "Geografía de América",
+            "Geografía física y humana",
+            "Medio ambiente y recursos naturales",
+            "Globalización"
+          ],
+          "prerequisites": [],
+          "daily_order": 3,
+          "difficulty": "foundation",
+          "paes_frequency": "media"
+        },
+        {
+          "id": "HIST-U4",
+          "title": "Educación Cívica",
+          "topics": [
+            "Constitución y Estado",
+            "Derechos y deberes ciudadanos",
+            "Instituciones democráticas",
+            "Economía básica",
+            "Derechos Humanos"
+          ],
+          "prerequisites": [],
+          "daily_order": 4,
+          "difficulty": "foundation",
+          "paes_frequency": "media"
+        }
+      ]
+    }
+  },
+  "careers": [
+    { "id": "medicina", "name": "Medicina", "subjects": ["M1", "CIENCIAS"], "category": "salud" },
+    { "id": "enfermeria", "name": "Enfermería", "subjects": ["CIENCIAS", "CL"], "category": "salud" },
+    { "id": "kinesiologia", "name": "Kinesiología", "subjects": ["CIENCIAS", "M1"], "category": "salud" },
+    { "id": "ingenieria_civil", "name": "Ingeniería Civil", "subjects": ["M2", "CIENCIAS"], "category": "ingenieria" },
+    { "id": "ingenieria_comercial", "name": "Ingeniería Comercial", "subjects": ["M1", "M2"], "category": "negocios" },
+    { "id": "derecho", "name": "Derecho", "subjects": ["CL", "HIST"], "category": "humanidades" },
+    { "id": "psicologia", "name": "Psicología", "subjects": ["CL", "CIENCIAS"], "category": "social" },
+    { "id": "pedagogia", "name": "Pedagogía", "subjects": ["CL", "HIST"], "category": "educacion" },
+    { "id": "arquitectura", "name": "Arquitectura", "subjects": ["M1", "M2"], "category": "arte_disenio" },
+    { "id": "trabajo_social", "name": "Trabajo Social", "subjects": ["CL", "HIST"], "category": "social" },
+    { "id": "contador", "name": "Contador Auditor", "subjects": ["M1", "M2"], "category": "negocios" },
+    { "id": "periodismo", "name": "Periodismo", "subjects": ["CL", "HIST"], "category": "comunicacion" },
+    { "id": "agronomia", "name": "Agronomía", "subjects": ["CIENCIAS", "M1"], "category": "ciencias_naturales" },
+    { "id": "computacion", "name": "Ingeniería en Computación", "subjects": ["M2", "M1"], "category": "tecnologia" },
+    { "id": "diseno", "name": "Diseño", "subjects": ["CL"], "category": "arte_disenio" }
+  ],
+  "diagnosticQuestions": [
+    {
+      "id": "D1",
+      "subject": "M1",
+      "level": "foundation",
+      "question": "¿Cuánto es 3/4 + 1/2?",
+      "options": ["A) 1/2", "B) 5/4", "C) 4/6", "D) 2/3"],
+      "answer": "B",
+      "gap_if_wrong": "Fracciones básicas",
+      "explanation": "Para sumar fracciones, necesitas el mínimo común múltiplo. 1/2 = 2/4, entonces 3/4 + 2/4 = 5/4"
+    },
+    {
+      "id": "D2",
+      "subject": "M1",
+      "level": "foundation",
+      "question": "Si tienes $5.000 y gastas el 20%, ¿cuánto te queda?",
+      "options": ["A) $1.000", "B) $4.000", "C) $3.500", "D) $4.500"],
+      "answer": "B",
+      "gap_if_wrong": "Porcentajes",
+      "explanation": "El 20% de $5.000 es $1.000. $5.000 - $1.000 = $4.000"
+    },
+    {
+      "id": "D3",
+      "subject": "M1",
+      "level": "medium",
+      "question": "¿Cuál es el valor de x si 2x + 4 = 10?",
+      "options": ["A) x = 2", "B) x = 3", "C) x = 4", "D) x = 7"],
+      "answer": "B",
+      "gap_if_wrong": "Ecuaciones de primer grado",
+      "explanation": "2x + 4 = 10 → 2x = 6 → x = 3"
+    },
+    {
+      "id": "D4",
+      "subject": "CL",
+      "level": "foundation",
+      "question": "Lee: 'El sol se ocultó detrás de las nubes y la lluvia comenzó a caer silenciosamente.' ¿Cuál es la idea principal?",
+      "options": ["A) El sol es brillante", "B) Comenzó a llover", "C) Las nubes son grises", "D) El viento sopla fuerte"],
+      "answer": "B",
+      "gap_if_wrong": "Idea principal",
+      "explanation": "La oración describe dos acciones: el sol se ocultó Y la lluvia cayó. La lluvia es el evento principal descrito."
+    },
+    {
+      "id": "D5",
+      "subject": "CL",
+      "level": "medium",
+      "question": "'A pesar de estudiar mucho, Juan no logró aprobar el examen.' ¿Qué relación existe entre las dos partes?",
+      "options": ["A) Causa-efecto", "B) Contraste/adversativa", "C) Secuencia temporal", "D) Condición"],
+      "answer": "B",
+      "gap_if_wrong": "Conectores y relaciones textuales",
+      "explanation": "'A pesar de' es un conector adversativo que indica contraste. Se esperaba que al estudiar mucho, pasara el examen, pero no pasó."
+    },
+    {
+      "id": "D6",
+      "subject": "HIST",
+      "level": "foundation",
+      "question": "¿Cuándo se independizó Chile de España?",
+      "options": ["A) 1818", "B) 1810", "C) 1835", "D) 1791"],
+      "answer": "A",
+      "gap_if_wrong": "Historia de Chile - Independencia",
+      "explanation": "La Independencia de Chile se declaró formalmente el 12 de febrero de 1818. El 18 de septiembre de 1810 fue el inicio del proceso (Primera Junta Nacional de Gobierno)."
+    },
+    {
+      "id": "D7",
+      "subject": "CIENCIAS",
+      "level": "foundation",
+      "question": "¿Cuál es la función principal de los glóbulos rojos?",
+      "options": ["A) Defender contra infecciones", "B) Transportar oxígeno", "C) Coagular la sangre", "D) Producir hormonas"],
+      "answer": "B",
+      "gap_if_wrong": "Biología - Sistema circulatorio",
+      "explanation": "Los glóbulos rojos (eritrocitos) contienen hemoglobina, que transporta oxígeno desde los pulmones a todos los tejidos del cuerpo."
+    }
+  ]
+}

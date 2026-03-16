@@ -1,8 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Profe PAES 
 
-## Getting Started
+**Tu preuniversitario gratis** — AI tutor for Chilean students preparing the PAES exam.
 
-First, run the development server:
+Built for the Amazon Nova Hackathon. Powered by **Amazon Nova** via Amazon Bedrock.
+
+## What it does
+
+- **Diagnostic test** — detects knowledge gaps (what the student doesn't know they don't know)
+- **1-year study plan** — personalized daily missions based on the DEMRE official temario
+- **AI Tutor chat** — text, voice (Web Speech API), and image upload (photo of any exercise)
+- **Text-to-speech** — browser TTS reads AI responses aloud
+- **Progress tracking** — streak counter, daily missions, gap level per subject
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Frontend | Next.js 14 + TailwindCSS |
+| AI | Amazon Nova Lite + Nova Pro (via Bedrock Converse API) |
+| Database | Amazon DynamoDB (PAY_PER_REQUEST) |
+| Hosting | AWS Amplify |
+
+## Setup
+
+### 1. Install dependencies
+
+```bash
+npm install
+```
+
+### 2. Create `.env.local`
+
+```
+AWS_ACCESS_KEY_ID=your_key
+AWS_SECRET_ACCESS_KEY=your_secret
+AWS_REGION=us-east-1
+DYNAMODB_TABLE=profe-paes-students
+```
+
+### 3. Create DynamoDB table
+
+```bash
+node scripts/setup-dynamodb.js
+```
+
+### 4. Run locally
 
 ```bash
 npm run dev
